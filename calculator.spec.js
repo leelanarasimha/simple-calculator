@@ -29,4 +29,15 @@ describe('Calculator.js', function () {
     calculator.divide(2);
     expect(calculator.total).toBe(5);
   });
+
+  //ToBe Matcher (===)
+  it('should initialize the total', function () {
+    const calculator = new Calculator();
+    //let person1 = { name: 'leela' };
+    //let person2 = { name: 'leela' };
+
+    //expect(person1).toBe(person1);
+
+    expect(calculator.total).toBe(0);
+  });
 });
