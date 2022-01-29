@@ -40,4 +40,12 @@ describe('Calculator.js', function () {
 
     expect(calculator.total).toBe(0);
   });
+
+  //ToEqual Matcher
+  it('should initialize the calculator', function () {
+    const calculator1 = new Calculator();
+    const calculator2 = new Calculator();
+
+    expect(calculator1).toEqual(calculator2);
+  });
 });
