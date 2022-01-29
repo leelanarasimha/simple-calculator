@@ -37,7 +37,7 @@ describe('Calculator.js', function () {
     //let person2 = { name: 'leela' };
 
     //expect(person1).toBe(person1);
-
+    expect(calculator.total).toBeFalsy();
     expect(calculator.total).toBe(0);
   });
 
@@ -46,6 +46,8 @@ describe('Calculator.js', function () {
     const calculator1 = new Calculator();
     const calculator2 = new Calculator();
 
+    expect(calculator1).toBeTruthy();
+    expect(calculator2).toBeTruthy();
     expect(calculator1).toEqual(calculator2);
   });
 });
