@@ -50,4 +50,11 @@ describe('Calculator.js', function () {
     expect(calculator2).toBeTruthy();
     expect(calculator1).toEqual(calculator2);
   });
+
+  //not matcher
+  it('should have unique calculator object', function () {
+    const calculator1 = new Calculator();
+    const calculator2 = new Calculator();
+    expect(calculator1).not.toBe(calculator2);
+  });
 });
