@@ -73,4 +73,12 @@ describe('Calculator.js', function () {
     calculator.total = null;
     expect(calculator.total).toBeNull();
   });
+
+  //tocontain matcher
+  it('should have the calculator constructor', function () {
+    const calculator = new Calculator();
+    let arr = [1, 2, 3, 4];
+    expect(arr).toContain(3);
+    expect(calculator.constructor.name).toContain('Calc');
+  });
 });
