@@ -81,4 +81,12 @@ describe('Calculator.js', function () {
     expect(arr).toContain(3);
     expect(calculator.constructor.name).toContain('Calc');
   });
+
+  //toBeNaN Matcher
+  it('doesnot handle NaN for multiply', function () {
+    const calculator = new Calculator();
+    calculator.total = 10;
+    calculator.multiply('a');
+    expect(calculator.total).toBeNaN();
+  });
 });
