@@ -89,4 +89,17 @@ describe('Calculator.js', function () {
     calculator.multiply('a');
     expect(calculator.total).toBeNaN();
   });
+
+  //toThrow matcher
+  it('should throw error when divide by zero', function () {
+    const calculator = new Calculator();
+    calculator.total = 10;
+    expect(function () {
+      calculator.divide(0);
+    }).toThrow();
+
+    expect(function () {
+      calculator.divide(0);
+    }).toThrow(new Error('number cannot be zero'));
+  });
 });
