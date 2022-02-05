@@ -102,4 +102,20 @@ describe('Calculator.js', function () {
       calculator.divide(0);
     }).toThrow(new Error('number cannot be zero'));
   });
+
+  //toThrowError Matcher
+  it('should throw error with message when divide by zero', function () {
+    const calculator = new Calculator();
+    calculator.total = 10;
+    expect(function () {
+      calculator.divide(0);
+    }).toThrowError();
+    expect(function () {
+      calculator.divide(0);
+    }).toThrowError('number cannot be zero');
+
+    expect(function () {
+      calculator.divide(0);
+    }).toThrowError(ArithmeticError, 'number cannot be zero');
+  });
 });
