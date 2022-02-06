@@ -128,6 +128,7 @@ describe('Calculator.js', function () {
     expect(typeof calculator.total).toMatch('ber');
   });
 
+  //anything matcher
   it('should return the total as value', function () {
     const calculator = new Calculator();
     calculator.total = 10;
@@ -143,5 +144,18 @@ describe('Calculator.js', function () {
     expect(calculator).toEqual(jasmine.any(Object));
     expect(calculator).toEqual(jasmine.any(Calculator));
     expect(calculator.total).toEqual(jasmine.any(Number));
+  });
+
+  //objectcontaining
+  it('should contain total as key', function () {
+    const calculator = new Calculator();
+    calculator.total = 10;
+    expect(calculator).toEqual(
+      jasmine.objectContaining({
+        total: 10
+      })
+    );
+
+    expect(typeof calculator.total).toEqual(jasmine.stringContaining('ber'));
   });
 });
