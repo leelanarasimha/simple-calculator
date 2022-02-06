@@ -118,4 +118,13 @@ describe('Calculator.js', function () {
       calculator.divide(0);
     }).toThrowError(ArithmeticError, 'number cannot be zero');
   });
+
+  //toMatch Matcher
+  it('should return total a number', function () {
+    const calculator = new Calculator();
+    calculator.total = 10;
+    expect(calculator.add(10)).toBe(20);
+    expect(calculator.total).toMatch(/-?\d+/);
+    expect(typeof calculator.total).toMatch('ber');
+  });
 });
