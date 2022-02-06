@@ -127,4 +127,12 @@ describe('Calculator.js', function () {
     expect(calculator.total).toMatch(/-?\d+/);
     expect(typeof calculator.total).toMatch('ber');
   });
+
+  it('should return the total as value', function () {
+    const calculator = new Calculator();
+    calculator.total = 10;
+    expect(calculator.total).toEqual(jasmine.anything());
+    //expect(null).toEqual(jasmine.anything());
+    //expect(undefined).toEqual(jasmine.anything());
+  });
 });
