@@ -139,11 +139,13 @@ describe('Calculator.js', function () {
 
   //any Matcher
   it('should be an instance ', function () {
+    jasmine.addMatchers(CustomMatcher);
     const calculator = new Calculator();
     calculator.total = 10;
     expect(calculator).toEqual(jasmine.any(Object));
     expect(calculator).toEqual(jasmine.any(Calculator));
     expect(calculator.total).toEqual(jasmine.any(Number));
+    expect(calculator).toBeCalculator();
   });
 
   //objectcontaining
