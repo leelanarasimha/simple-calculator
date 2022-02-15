@@ -1,15 +1,26 @@
 describe('Calculator.js', function () {
   describe('Calculator', function () {
+    let calculator;
+    let calculator2;
+    beforeEach(function () {
+      //executes before execution of each spec in the suite
+      calculator = new Calculator();
+      calculator2 = new Calculator();
+    });
+
+    afterEach(function () {
+      //executes after execution of each spec in the suite
+      //clean up after the spec execution
+    });
+
     //tobeNUll
     it('can overwrite total value', function () {
-      const calculator = new Calculator();
       calculator.total = null;
       expect(calculator.total).toBeNull();
     });
 
     //anything matcher
     it('should return the total as value', function () {
-      const calculator = new Calculator();
       calculator.total = 10;
       expect(calculator.total).toEqual(jasmine.anything());
       //expect(null).toEqual(jasmine.anything());
@@ -19,7 +30,7 @@ describe('Calculator.js', function () {
     //any Matcher
     it('should be an instance ', function () {
       jasmine.addMatchers(CustomMatcher);
-      const calculator = new Calculator();
+
       calculator.total = 10;
       expect(calculator).toEqual(jasmine.any(Object));
       expect(calculator).toEqual(jasmine.any(Calculator));
@@ -29,7 +40,6 @@ describe('Calculator.js', function () {
 
     //objectcontaining
     it('should contain total as key', function () {
-      const calculator = new Calculator();
       calculator.total = 10;
       expect(calculator).toEqual(
         jasmine.objectContaining({
@@ -42,14 +52,12 @@ describe('Calculator.js', function () {
 
     //tocontain matcher
     it('should have the calculator constructor', function () {
-      const calculator = new Calculator();
       let arr = [1, 2, 3, 4];
       expect(arr).toContain(3);
       expect(calculator.constructor.name).toContain('Calc');
     });
     //ToBe Matcher (===)
     it('should initialize the total', function () {
-      const calculator = new Calculator();
       //let person1 = { name: 'leela' };
       //let person2 = { name: 'leela' };
 
@@ -60,24 +68,18 @@ describe('Calculator.js', function () {
 
     //ToEqual Matcher
     it('should initialize the calculator', function () {
-      const calculator1 = new Calculator();
-      const calculator2 = new Calculator();
-
-      expect(calculator1).toBeTruthy();
+      expect(calculator).toBeTruthy();
       expect(calculator2).toBeTruthy();
-      expect(calculator1).toEqual(calculator2);
+      expect(calculator).toEqual(calculator2);
     });
 
     //not matcher
     it('should have unique calculator object', function () {
-      const calculator1 = new Calculator();
-      const calculator2 = new Calculator();
-      expect(calculator1).not.toBe(calculator2);
+      expect(calculator).not.toBe(calculator2);
     });
 
     //TobeUndefined
     it('should have common methods', function () {
-      const calculator = new Calculator();
       expect(calculator.add).not.toBeUndefined();
       expect(calculator.multiply).not.toBeUndefined();
       expect(calculator.subtract).toBeDefined();
@@ -86,7 +88,6 @@ describe('Calculator.js', function () {
 
     describe('add()', function () {
       it('should add number to the total', function () {
-        const calculator = new Calculator();
         calculator.add(5);
 
         expect(calculator.total).toBe(5);
@@ -94,7 +95,6 @@ describe('Calculator.js', function () {
 
       //toMatch Matcher
       it('should return total a number', function () {
-        const calculator = new Calculator();
         calculator.total = 10;
         expect(calculator.add(10)).toBe(20);
         expect(calculator.total).toMatch(/-?\d+/);
@@ -105,7 +105,7 @@ describe('Calculator.js', function () {
     describe('subtract()', function () {
       it('should subtract number from the total', function () {
         //TODO: Expectations
-        const calculator = new Calculator();
+
         calculator.total = 30;
         calculator.subtract(5);
         expect(calculator.total).toBe(25);
@@ -115,7 +115,7 @@ describe('Calculator.js', function () {
     describe('multiply', function () {
       it('should multiply number with the total', function () {
         //TODO: Expectations
-        const calculator = new Calculator();
+
         calculator.total = 10;
         calculator.multiply(2);
         expect(calculator.total).toBe(20);
@@ -123,7 +123,6 @@ describe('Calculator.js', function () {
 
       //toBeNaN Matcher
       it('doesnot handle NaN for multiply', function () {
-        const calculator = new Calculator();
         calculator.total = 10;
         calculator.multiply('a');
         expect(calculator.total).toBeNaN();
@@ -133,14 +132,13 @@ describe('Calculator.js', function () {
     describe('divide()', function () {
       it('should divide number by the total', function () {
         //TODO: Expectations
-        const calculator = new Calculator();
+
         calculator.total = 10;
         calculator.divide(2);
         expect(calculator.total).toBe(5);
       });
       //toThrow matcher
       it('should throw error when divide by zero', function () {
-        const calculator = new Calculator();
         calculator.total = 10;
         expect(function () {
           calculator.divide(0);
@@ -152,7 +150,6 @@ describe('Calculator.js', function () {
       });
       //toThrowError Matcher
       it('should throw error with message when divide by zero', function () {
-        const calculator = new Calculator();
         calculator.total = 10;
         expect(function () {
           calculator.divide(0);
