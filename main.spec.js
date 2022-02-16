@@ -9,6 +9,19 @@ describe('main.js', function () {
     xit('calls updateResult');
   });
   describe('updateResult()', function () {
-    xit('add result to the dom element');
+    let element;
+    beforeAll(function () {
+      element = document.createElement('div');
+      element.setAttribute('id', 'result');
+      document.body.appendChild(element);
+    });
+    afterAll(function () {
+      const element = document.getElementById('result');
+      document.body.removeChild(element);
+    });
+    it('add result to the dom element', function () {
+      updateResult('5');
+      expect(element.innerText).toBe('5');
+    });
   });
 });
