@@ -1,11 +1,23 @@
 describe('main.js', function () {
   describe('calculate()', function () {
-    it('validate expression if the number is invalid', function () {
+    it('validate expression if the first number is invalid', function () {
       spyOn(window, 'updateResult').and.stub();
       calculate('a+3');
-
-      //expect(calculate('a+3')).toBe(5);
+      expect(window.updateResult).toHaveBeenCalled();
     });
+
+    it('validate expression if the second number is invalid', function () {
+      spyOn(window, 'updateResult').and.stub();
+      calculate('3+a');
+      expect(window.updateResult).toHaveBeenCalled();
+    });
+
+    it('validate expression if the operation is invalid', function () {
+      spyOn(window, 'updateResult').and.stub();
+      calculate('3_3');
+      expect(window.updateResult).toHaveBeenCalled();
+    });
+
     xit('Calls add');
     xit('Calls subtract');
     xit('Calls multiply');

@@ -1,5 +1,5 @@
-function calculate(event) {
-  const inputValue = event.target.value;
+function calculate(value) {
+  const inputValue = value;
   const expression = /\+|\*|\-|\//;
 
   const numbers = inputValue.split(expression);
@@ -44,4 +44,6 @@ function updateResult(result) {
 }
 
 document.getElementById('inputValue') &&
-  document.getElementById('inputValue').addEventListener('change', calculate);
+  document.getElementById('inputValue').addEventListener('change', function (event) {
+    calculate(event.target.value);
+  });
