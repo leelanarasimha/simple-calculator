@@ -1,6 +1,11 @@
 describe('main.js', function () {
-  describe('main()', function () {
-    xit('validate expression');
+  describe('calculate()', function () {
+    it('validate expression if the number is invalid', function () {
+      spyOn(window, 'updateResult').and.stub();
+      calculate('a+3');
+
+      //expect(calculate('a+3')).toBe(5);
+    });
     xit('Calls add');
     xit('Calls subtract');
     xit('Calls multiply');
