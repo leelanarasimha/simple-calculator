@@ -1,21 +1,24 @@
 describe('main.js', function () {
   describe('calculate()', function () {
     it('validate expression if the first number is invalid', function () {
-      spyOn(window, 'updateResult').and.stub();
+      spyOn(window, 'updateResult'); //and.stub is the default one and can be omitted
       calculate('a+3');
       expect(window.updateResult).toHaveBeenCalled();
+      expect(window.updateResult).toHaveBeenCalledWith('Expression not recognized');
     });
 
     it('validate expression if the second number is invalid', function () {
-      spyOn(window, 'updateResult').and.stub();
+      spyOn(window, 'updateResult');
       calculate('3+a');
       expect(window.updateResult).toHaveBeenCalled();
+      expect(window.updateResult).toHaveBeenCalledWith('Expression not recognized');
     });
 
     it('validate expression if the operation is invalid', function () {
-      spyOn(window, 'updateResult').and.stub();
+      spyOn(window, 'updateResult');
       calculate('3_3');
       expect(window.updateResult).toHaveBeenCalled();
+      expect(window.updateResult).toHaveBeenCalledWith('Expression not recognized');
     });
 
     xit('Calls add');
