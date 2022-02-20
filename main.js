@@ -30,8 +30,6 @@ function calculate(value) {
     case '/':
       result = calculator.divide(numberB);
       break;
-    default:
-      result = 'Operation not recognized';
   }
   updateResult(result);
 }
