@@ -24,7 +24,15 @@ describe('main.js', function () {
       expect(window.updateResult).toHaveBeenCalledTimes(1);
     });
 
-    xit('Calls add');
+    it('Calls add', function () {
+      const spy = spyOn(Calculator.prototype, 'add');
+      calculate('3+2');
+
+      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledTimes(2);
+      expect(spy).toHaveBeenCalledWith(2);
+      expect(spy).toHaveBeenCalledWith(3);
+    });
     xit('Calls subtract');
     xit('Calls multiply');
     xit('Calls divide');
