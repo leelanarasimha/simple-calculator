@@ -57,8 +57,15 @@ describe('main.js', function () {
       expect(spy).not.toHaveBeenCalledWith(6);
       expect(spy).toHaveBeenCalledTimes(1);
     });
-    xit('Validate Operation');
-    xit('calls updateResult');
+    it('calls updateResult', function () {
+      spyOn(window, 'updateResult');
+      spyOn(Calculator.prototype, 'multiply').and.callThrough();
+      calculate('3*9');
+
+      expect(window.updateResult).toHaveBeenCalled();
+      expect(Calculator.prototype.multiply).toHaveBeenCalled();
+      expect(window.updateResult).toHaveBeenCalledWith(27);
+    });
   });
 
   describe('updateResult()', function () {
