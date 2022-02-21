@@ -88,6 +88,16 @@ describe('main.js', function () {
       expect(Calculator.prototype.multiply).toHaveBeenCalled();
       expect(window.updateResult).toHaveBeenCalledWith('returns a value');
     });
+
+    it('calls updateResult (example for returnValues)', function () {
+      spyOn(window, 'updateResult');
+      spyOn(Calculator.prototype, 'add').and.returnValues(null, 'second call');
+      calculate('3+3');
+
+      expect(window.updateResult).toHaveBeenCalled();
+      expect(Calculator.prototype.add).toHaveBeenCalled();
+      expect(window.updateResult).toHaveBeenCalledWith('second call');
+    });
   });
 });
 
