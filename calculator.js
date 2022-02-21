@@ -31,3 +31,12 @@ Calculator.prototype.divide = function (number) {
   }
   return (this.total /= number);
 };
+
+Object.defineProperty(Calculator.prototype, 'version', {
+  get: function () {
+    return '0.2';
+  },
+
+  configurable: true,
+  enumerable: true
+});

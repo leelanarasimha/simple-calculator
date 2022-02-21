@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Calculator</title>
+    <script>
+      window.onload = function () {
+        showVersion();
+      };
+    </script>
   </head>
   <body>
     <h2>Simple Calculator</h2>
@@ -12,6 +17,8 @@
       <input type="text" id="inputValue" />
     </div>
     <div><span>Result: </span><span id="result">3</span></div>
+
+    <div style="text-align: center">Version: <span id="version"></span></div>
     <script type="text/javascript" src="calculator.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </body>
