@@ -98,6 +98,13 @@ describe('main.js', function () {
       expect(Calculator.prototype.add).toHaveBeenCalled();
       expect(window.updateResult).toHaveBeenCalledWith('second call');
     });
+
+    it('doesnot handle errors', function () {
+      spyOn(Calculator.prototype, 'multiply').and.throwError('Some error');
+      expect(function () {
+        calculate('3*3');
+      }).toThrowError('Some error');
+    });
   });
 });
 
