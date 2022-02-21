@@ -57,7 +57,7 @@ describe('main.js', function () {
       expect(spy).not.toHaveBeenCalledWith(6);
       expect(spy).toHaveBeenCalledTimes(1);
     });
-    it('calls updateResult', function () {
+    it('calls updateResult (example for callThrough)', function () {
       spyOn(window, 'updateResult');
       spyOn(Calculator.prototype, 'multiply').and.callThrough();
       calculate('3*9');
@@ -66,21 +66,33 @@ describe('main.js', function () {
       expect(Calculator.prototype.multiply).toHaveBeenCalled();
       expect(window.updateResult).toHaveBeenCalledWith(27);
     });
-  });
 
-  describe('updateResult()', function () {
-    beforeAll(function () {
-      const element = document.createElement('div');
-      element.setAttribute('id', 'result');
-      document.body.appendChild(element);
-      this.element = element;
+    it('calls updateResult (example for callFake)', function () {
+      spyOn(window, 'updateResult');
+      spyOn(Calculator.prototype, 'multiply').and.callFake(function () {
+        return 'Fake Call';
+      });
+      calculate('3*9');
+
+      expect(window.updateResult).toHaveBeenCalled();
+      expect(Calculator.prototype.multiply).toHaveBeenCalled();
+      expect(window.updateResult).toHaveBeenCalledWith('Fake Call');
     });
-    afterAll(function () {
-      document.body.removeChild(this.element);
-    });
-    it('add result to the dom element', function () {
-      updateResult('5');
-      expect(this.element.innerText).toBe('5');
-    });
+  });
+});
+
+describe('updateResult()', function () {
+  beforeAll(function () {
+    const element = document.createElement('div');
+    element.setAttribute('id', 'result');
+    document.body.appendChild(element);
+    this.element = element;
+  });
+  afterAll(function () {
+    document.body.removeChild(this.element);
+  });
+  it('add result to the dom element', function () {
+    updateResult('5');
+    expect(this.element.innerText).toBe('5');
   });
 });
