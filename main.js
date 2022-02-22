@@ -46,7 +46,9 @@ function showVersion() {
   const element = document.getElementById('version');
 
   if (element) {
-    element.innerText = calculator.version;
+    calculator.version.then(function (version) {
+      element.innerText = version;
+    });
   }
 }
 
