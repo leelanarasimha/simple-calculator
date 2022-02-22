@@ -128,7 +128,12 @@ describe('main.js', function () {
       spyOn(document, 'getElementById').and.returnValue({
         innerText: null
       });
+      const spy = spyOnProperty(Calculator.prototype, 'version', 'get').and.returnValue('0.9');
+
       showVersion();
+      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy()).toEqual('0.9');
     });
   });
 });
