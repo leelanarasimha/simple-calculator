@@ -106,20 +106,29 @@ describe('main.js', function () {
       }).toThrowError('Some error');
     });
   });
-});
 
-describe('updateResult()', function () {
-  beforeAll(function () {
-    const element = document.createElement('div');
-    element.setAttribute('id', 'result');
-    document.body.appendChild(element);
-    this.element = element;
+  describe('updateResult()', function () {
+    beforeAll(function () {
+      const element = document.createElement('div');
+      element.setAttribute('id', 'result');
+      document.body.appendChild(element);
+      this.element = element;
+    });
+    afterAll(function () {
+      document.body.removeChild(this.element);
+    });
+    it('add result to the dom element', function () {
+      updateResult('5');
+      expect(this.element.innerText).toBe('5');
+    });
   });
-  afterAll(function () {
-    document.body.removeChild(this.element);
-  });
-  it('add result to the dom element', function () {
-    updateResult('5');
-    expect(this.element.innerText).toBe('5');
+
+  describe('showVersion()', function () {
+    it('should call the showversion method', function () {
+      spyOn(document, 'getElementById').and.returnValue({
+        innerText: null
+      });
+      showVersion();
+    });
   });
 });
