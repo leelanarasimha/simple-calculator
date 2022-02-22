@@ -163,5 +163,14 @@ describe('Calculator.js', function () {
         }).toThrowError(ArithmeticError, 'number cannot be zero');
       });
     });
+
+    describe('get Version', function () {
+      it('fetches version from external source', function (done) {
+        calculator.version.then(function (version) {
+          expect(version).toBe('0.4');
+          done();
+        });
+      });
+    });
   });
 });
